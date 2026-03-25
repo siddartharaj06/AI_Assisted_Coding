@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Food Ordering</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>Online Food Ordering</h1>
+        <p>Browse menu, place orders, track status, and manage order updates.</p>
+      </header>
+
+      <section class="card">
+        <h2>Menu</h2>
+        <div id="menu-list" class="menu-grid"></div>
+      </section>
+
+      <section class="card">
+        <h2>Place New Order</h2>
+        <form id="order-form" class="form-grid">
+          <label>
+            Customer Name
+            <input id="customer-name" type="text" required />
+          </label>
+
+          <label>
+            Menu Item
+            <select id="menu-item" required></select>
+          </label>
+
+          <label>
+            Quantity
+            <input id="quantity" type="number" min="1" value="1" required />
+          </label>
+
+          <label>
+            Notes
+            <input id="notes" type="text" placeholder="Optional instructions" />
+          </label>
+
+          <button type="submit">Place Order</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Track / Update Order</h2>
+        <form id="track-form" class="form-inline">
+          <input id="track-order-id" type="number" min="1" placeholder="Order ID" required />
+          <button type="submit" class="secondary">Track</button>
+        </form>
+
+        <div id="order-panel" class="order-panel hidden">
+          <p><strong>Order ID:</strong> <span id="view-id"></span></p>
+          <p><strong>Customer:</strong> <span id="view-customer"></span></p>
+          <p><strong>Status:</strong> <span id="view-status" class="badge"></span></p>
+          <p><strong>Total:</strong> <span id="view-total"></span></p>
+          <p><strong>Items:</strong> <span id="view-items"></span></p>
+
+          <form id="update-form" class="form-grid">
+            <label>
+              Update Item
+              <select id="update-menu-item"></select>
+            </label>
+
+            <label>
+              New Quantity
+              <input id="update-quantity" type="number" min="1" value="1" required />
+            </label>
+
+            <label>
+              Update Status
+              <select id="update-status">
+                <option value="">No change</option>
+                <option value="placed">placed</option>
+                <option value="preparing">preparing</option>
+                <option value="ready">ready</option>
+                <option value="out_for_delivery">out_for_delivery</option>
+                <option value="delivered">delivered</option>
+              </select>
+            </label>
+
+            <label>
+              Update Notes
+              <input id="update-notes" type="text" placeholder="Optional" />
+            </label>
+
+            <div class="actions">
+              <button type="submit">Update Order</button>
+              <button id="cancel-order-btn" type="button" class="danger">Cancel Order</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <p id="status" class="status" aria-live="polite"></p>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
